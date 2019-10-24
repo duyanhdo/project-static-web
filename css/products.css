@@ -1,0 +1,94 @@
+.hero{
+	background-image: url('../images/bannersp.png');
+}
+.search{
+	color: black;
+	width: 100%;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid black;
+}
+.search1{
+	margin-left: -30px;
+	color: black;
+	cursor: pointer;
+}
+.search1:hover{
+	opacity: 0.8;
+}
+.orderBy{
+	font-size: 24px;
+	line-height: 28px;
+	text-transform: capitalize;
+	color: #FF8A00;
+	border-right: 1px solid black;
+	padding-right: 10px;
+}
+.orderBy--choice{
+	font-size: 24px;
+	line-height: 28px;
+	text-transform: capitalize;
+	padding-left: 10px;
+}
+.orderBy--choice--input{
+	margin-left: 25px;
+}
+.xemthem{
+	background-color: #9DC3EA;
+	border-color: #9DC3EA;
+	margin:auto;
+	padding: 8px 20px;
+	cursor: pointer;
+}
+.spzero{
+	padding: 0;
+}
+.muangay{
+	background-color: #FF8A00;
+	border-color: #FF8A00;
+}
+#results{
+	max-height: 300px;
+	overflow: auto;
+	background-color: #dfe6e9;
+}
+body{
+	transition: .3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
