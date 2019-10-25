@@ -77,11 +77,11 @@ jQuery(document).ready(function($) {
 
 	var id = document.URL.slice(-2);
 	$.getJSON('data.json',function(products){
-
+		
 		while(id.charAt(0) == '0') id = id.substring(1, id.length);
 		var sl = localStorage.getItem(id);
-		if(sl == null) sl = 0;
-
+		if(sl==null || isNaN(sl)) sl = 0;
+		
 		$('#detail').html(`
 			<div class="col-7">
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -111,14 +111,43 @@ jQuery(document).ready(function($) {
 			<p class="detail__p mb-lg-4 pb-lg-4">${products[id-1].name}</p> 
 			<p class="detail__p pb-lg-4">${products[id-1].price}</p>
 			<div class="buy mt-lg-5 mt-4">
-			<span class="substract" onclick="function substract(){var i = parseInt($('.quantity').text(),10);if (i > 0) {i --;$('.quantity').text(i);};localStorage.setItem(`+id+`, i);}substract()">-</span>
+			<span class="substract" onclick="function substract(){
+				var i = parseInt($('.quantity').text(),10);
+				if (i > 0) {
+					i --;
+					$('.quantity').text(i);
+				};
+			}substract()">-</span>
 			<span class="quantity" >` + sl + `</span>
-			<span class="plus" onclick="function plus(){var i = parseInt($('.quantity').text(),10);if (i < 1000) {i ++;$('.quantity').text(i);};localStorage.setItem(`+id+`, i);}plus()">+</span>
+			<span class="plus" onclick="function plus()
+			{
+				var i = parseInt($('.quantity').text(),10);
+				if (i < 1000) {
+					i ++;
+					$('.quantity').text(i);
+				};
+			}
+			plus()">+</span>
 			</div>
 			<div class="addtocart text-center py-md-3 py-2 mt-lg-5 mt-4" onclick="function add(){
-				var i = parseInt($('.quantity').text(),10);
-				var a = parseInt($('#show').text(),10);
-				$('#show').text(i+a);
+				localStorage.setItem(`+id+`, parseInt($('.quantity').text()));
+				
+				$.getJSON('data.json', function(data) {
+					let count = 0;
+					for(var i=0;i<data.length;i++){
+						let id = data[i].id;
+						while(id.charAt(0) == '0') id = id.substring(1, id.length);
+						if(localStorage.getItem(id) > 0){
+							count += parseInt(localStorage.getItem(id));
+							
+						}
+					}
+					console.log(count);
+					$('#show').text(count);
+
+				})
+				
+				
 			}add()">thêm vào giỏ</div>
 			<p class="detail__text mt-lg-5 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 			<span class="ttmh mt-md-5 mt-4"><a href="products.html" style="color: white">tiếp tục mua hàng</a></span>
@@ -131,21 +160,46 @@ jQuery(document).ready(function($) {
 			`);
 	});
 
-	
 	function showItem(data,id){
+		
 		let amount = localStorage.getItem(id);
 		let money = (localStorage.getItem(id)*data.price);
 		giohang+=`
 		<tbody>
 		<tr>
-		<th scope="row"><i class="fas fa-minus-circle"></i></th>
+		<th scope="row"><i class="fas fa-minus-circle" style="cursor:pointer" id=`+id+` onclick="function del(){
+		
+			$('#show').text(parseInt($('#show').text())-parseInt(localStorage.getItem(id)));
+			localStorage.setItem(id,0);
+			$('#'+id).parent().parent().parent().hide();
+			
+		}del()"></i></th>
 		<td>`+data.name+`</td>
 		<td>`+amount +`</td>
-		<td>`+ data.price+`</td>
-		<td>`+ money +`</td>
+		<td>`+ processMoney(data.price)+`</td>
+		<td>`+ processMoney(money+"")+`</td>
 		</tr>
 		</tbody>
 		`;
+		return parseInt(amount);
+	}
+
+	function calMoney(data){
+		let id = data.id;
+		while(id.charAt(0) == '0') id = id.substring(1, id.length);
+		return data.price * localStorage.getItem(id);
+	}
+
+	function processMoney(money){
+		let count = 0;
+		let res = "";
+		for(let i=money.length-1;i>=0;i--){
+			res =  money.charAt(i) + res;
+			count ++;
+			if(count%3 == 0) res = "." + res ;
+		}
+		if(res.charAt(0) == '.') res = res.substring(1, res.length);
+		return res;
 	}
 
 	$.get('data.json', function(data) {
@@ -161,21 +215,25 @@ jQuery(document).ready(function($) {
 		<th scope="col">Thanh Toán</th>
 		</tr>
 		</thead>`;
-		
+		let count = 0,money = 0;
 		for(var i=0;i<data.length;i++){
 			let id = data[i].id;
 			while(id.charAt(0) == '0') id = id.substring(1, id.length);
 			if(localStorage.getItem(id) > 0){
-				showItem(data[i],id);
+				count += showItem(data[i],id);
+				money += calMoney(data[i]);
 			}
 		}
+		$('#show').text(count);
 
 		giohang+=`</table>
 		</div>`
 
 		$('#giohang').html(giohang);
 
+
 	});
+
 
 	$('.mid').on( 'click', 'button', function() {
 		var sortValue = $(this).attr('data-sort-value');
@@ -192,61 +250,6 @@ jQuery(document).ready(function($) {
 		$("#content").isotope({ filter: filterValue });
 	})
 
-	// function showItem2(data,id){
-	// 	let amount = localStorage.getItem(id);
-	// 	let money = (localStorage.getItem(id)*data.price);
-
-	// 	giohang2+=`
-	// 	<tbody>
-	// 	<tr>
-	// 	<th scope="row"><i class="fas fa-minus-circle"></i></th>
-	// 	<td>`+data.name+`</td>
-	// 	<td>`+amount +`</td>
-	// 	<td>`+ data.price+`</td>
-	// 	<td>`+ money +`</td>
-	// 	</tr>
-	// 	</tbody>
-	// 	`;
-
-	// }
-
-	// $.get('data.json', function(data) {
-	// 	giohang2 = `<div class="col-12 mt-5 py-5">
-
-	// 	<div class="row">
-	// 	<div class="table-responsive mb-5 text-center">
-	// 	<table class="table table-striped">
-	// 	<thead class="thead-dark">
-	// 	<tr>
-	// 	<th scope="col">Xoá</th>
-	// 	<th scope="col">Sản Phẩm</th>
-	// 	<th scope="col">Số Lượng</th>
-	// 	<th scope="col">Giá</th>
-	// 	<th scope="col">Thanh Toán</th>
-	// 	</tr>
-	// 	</thead>`;
-
-	// 	for(var i=0;i<data.length;i++){
-	// 		let id = data[i].id;
-	// 		while(id.charAt(0) == '0') id = id.substring(1, id.length);
-	// 		if(localStorage.getItem(id) > 0){
-	// 			showItem2(data[i],id);
-	// 		}
-	// 	}
-
-	// 	giohang2 += `</table>
-	// 	</div>
-	// 	</div>
-
-	// 	<div class="row" style="color: red;margin-bottom: 50px;font-size: .9em">
-	// 	<div class="col-12 text-right">
-	// 	`+ money +`vnd
-	// 	</div>
-	// 	</div>`
-
-	// 	$('#cartcontinue').html(giohang2);
-
-	// });
 
 	$('.filter-press').click(function(event) {
 		$('.filter-press').css({
@@ -269,6 +272,7 @@ jQuery(document).ready(function($) {
 			});
 		} 
 	}); 
+
 	$('.back-to-top').click(function(){ 
 		$("html, body").animate({ scrollTop: 0 }, 600); 
 		return false; 
