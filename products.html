@@ -37,25 +37,25 @@
 
   <!-- Main -->
   <div class="container">
-    <div class="row text-center product__list mt-lg-0 mt-5">
+    <div class="row text-center product__list mt-lg-0 mt-5 filter">
       <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3">
         <span class="product__list--all"><a href="" style="color: #D81728">tất cả sản phẩm</a></span>
       </div>
-      <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--hmv">
-        <a href="" style="color: black">hàng mới về</a>
-      </div>
-      <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--dcxh">
-        <a href="" style="color: black">đồ chơi xe hơi</a>
-      </div>
-      <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--nt">
-        <a href="" style="color: black">nội thất</a>
-      </div>
-      <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--pk">
-        <a href="" style="color: black">phụ kiện</a>
-      </div>
-      <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--k">
-        <a href="" style="color: black">khác</a>
-      </div> 
+      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--hmv filter-press" data-filter=".de">
+        Đề
+      </button>
+      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--dcxh filter-press" data-filter=".qkn">
+        Quạt két nước
+      </button>
+      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--nt filter-press" data-filter=".qgl">
+        Quạt giàn lạnh
+      </button>
+      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--pk filter-press" data-filter=".mm">
+        Mặt máy
+      </button>
+      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--k filter-press" data-filter=".mp">
+        Máy phát
+      </button> 
     </div> <!-- het row -->
 
     <div class="row my-5">
@@ -64,8 +64,8 @@
       </div>
       <div class="col-lg-9 col-sm-8 col-12 text-md-right text-center mid">
         <span class="orderBy">sắp xếp theo</span>
-        <input class="orderBy--choice--input" type="radio" name="g"><span class="orderBy--choice ascPrice">giá</span>
-        <input class="orderBy--choice--input" type="radio" name="g"><span class="orderBy--choice ascAlphabet">bảng chữ cái</span>
+          <button class="orderBy--choice--input orderBy--choice ascPrice sortCommon" data-sort-value="sortPrice">giá</button>
+          <button class="orderBy--choice--input orderBy--choice ascAlphabet sortCommon" data-sort-value="sortName">bảng chữ cái</button>
       </div>
       <div class="col-12 pt-5">
         <div id="results"></div>
@@ -101,6 +101,9 @@
 
   <!-- Boostrap JS -->
   <script src="js/bootstrap.min.js"></script>
+
+  <!-- Isotope -->
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 
   <!-- Script JS -->
   <script src="js/script.js"></script>

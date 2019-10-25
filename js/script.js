@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+	var list = [];
 	//goi header.html, footer.html
 	$('#header').load('header.html');
 	$('#footer').load('footer.html');
@@ -15,8 +16,8 @@ jQuery(document).ready(function($) {
 					<div class="card" style="height:100%">
 					<img src="${products[index-1].img}" class="card-img-top" alt="...">
 					<div class="card-body">
-					<p class="card-text">${products[index-1].name}</p>
-					<p>${products[index-1].price}</p> <br> <br>
+					<p class="card-text sortName">${products[index-1].name}</p>
+					<p class="sortPrice">${products[index-1].price}</p> <br> <br>
 					<a href="details.html#${products[index-1].id}" class="btn btn-primary muangay" style="position:absolute;bottom :25px">Mua ngay</a>
 					</div>
 					</div>
@@ -24,28 +25,6 @@ jQuery(document).ready(function($) {
 			}
 		});
 	}
-
-	function asc1(a, b) {
-		const al1 = a.$('#content').text().toUpperCase();
-		const al2 = b.$('#content').text().toUpperCase();
-
-		let comparison = 0;
-		if (al1 > al2) {
-			comparison = 1;
-		} else if (al1 < al2) {
-			comparison = -1;
-		}
-		return comparison;
-	}
-
-	$.get('data.json', function(data) {
-		$('.ascAlphabet').on('click',function(){
-			$('#content').remove();
-			data.sort(asc1);
-			loadjson();
-		});
-	});
-	
 
 	loadjson();
 	$('#xemthem').click(function(event) {
@@ -96,8 +75,13 @@ jQuery(document).ready(function($) {
 		});
 	})
 
-	let id = document.URL.slice(-2);
+	var id = document.URL.slice(-2);
 	$.getJSON('data.json',function(products){
+
+		while(id.charAt(0) == '0') id = id.substring(1, id.length);
+		var sl = localStorage.getItem(id);
+		if(sl == null) sl = 0;
+
 		$('#detail').html(`
 			<div class="col-7">
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -127,9 +111,9 @@ jQuery(document).ready(function($) {
 			<p class="detail__p mb-lg-4 pb-lg-4">${products[id-1].name}</p> 
 			<p class="detail__p pb-lg-4">${products[id-1].price}</p>
 			<div class="buy mt-lg-5 mt-4">
-			<span class="substract" onclick="function substract(){var i = parseInt($('.quantity').text(),10);if (i > 0) {i --;$('.quantity').text(i);}}substract()">-</span>
-			<span class="quantity" >1</span>
-			<span class="plus" onclick="function plus(){var i = parseInt($('.quantity').text(),10);if (i < 1000) {i ++;$('.quantity').text(i);}}plus()">+</span>
+			<span class="substract" onclick="function substract(){var i = parseInt($('.quantity').text(),10);if (i > 0) {i --;$('.quantity').text(i);};localStorage.setItem(`+id+`, i);}substract()">-</span>
+			<span class="quantity" >` + sl + `</span>
+			<span class="plus" onclick="function plus(){var i = parseInt($('.quantity').text(),10);if (i < 1000) {i ++;$('.quantity').text(i);};localStorage.setItem(`+id+`, i);}plus()">+</span>
 			</div>
 			<div class="addtocart text-center py-md-3 py-2 mt-lg-5 mt-4" onclick="function add(){
 				var i = parseInt($('.quantity').text(),10);
@@ -147,14 +131,26 @@ jQuery(document).ready(function($) {
 			`);
 	});
 
-	$('.addtocart').click(function(){
-		var i = parseInt($('.quantity').text(),10);
-		var a = parseInt($('#show').text(),10);
-		$('#show').text(i+a);
-	});
+	
+	function showItem(data,id){
+		let amount = localStorage.getItem(id);
+		let money = (localStorage.getItem(id)*data.price);
+		giohang+=`
+		<tbody>
+		<tr>
+		<th scope="row"><i class="fas fa-minus-circle"></i></th>
+		<td>`+data.name+`</td>
+		<td>`+amount +`</td>
+		<td>`+ data.price+`</td>
+		<td>`+ money +`</td>
+		</tr>
+		</tbody>
+		`;
+	}
 
 	$.get('data.json', function(data) {
-		let giohang = `<div class="table-responsive mb-5 pb-md-5 pb-0 text-center">
+
+		giohang = `<div class="table-responsive mb-5 pb-md-5 pb-0 text-center">
 		<table class="table table-striped">
 		<thead class="thead-light">
 		<tr>
@@ -164,32 +160,94 @@ jQuery(document).ready(function($) {
 		<th scope="col">Giá</th>
 		<th scope="col">Thanh Toán</th>
 		</tr>
-		</thead>
-		<tbody>`;
-
-		$('.addtocart').click(function(event) {
-			
-			giohang +=`
-			<tr>
-			<th scope="row"><i class="fas fa-minus-circle"></i></th>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			</tr>
-			`
-		});
+		</thead>`;
 		
+		for(var i=0;i<data.length;i++){
+			let id = data[i].id;
+			while(id.charAt(0) == '0') id = id.substring(1, id.length);
+			if(localStorage.getItem(id) > 0){
+				showItem(data[i],id);
+			}
+		}
 
-		giohang += `
-		</tbody>
-		</table>
-		</div>
-		`
+		giohang+=`</table>
+		</div>`
 
 		$('#giohang').html(giohang);
 
 	});
+
+	$('.mid').on( 'click', 'button', function() {
+		var sortValue = $(this).attr('data-sort-value');
+		$('#content').isotope({
+			getSortData: {
+				sortPrice: '.sortPrice parseInt',
+				sortName: '.sortName',
+			}
+		}).isotope({ sortBy: sortValue });
+	});
+
+	$(".filter").on( 'click', '.filter-press', function() {
+		let filterValue = $(this).attr('data-filter');
+		$("#content").isotope({ filter: filterValue });
+	})
+
+	// function showItem2(data,id){
+	// 	let amount = localStorage.getItem(id);
+	// 	let money = (localStorage.getItem(id)*data.price);
+
+	// 	giohang2+=`
+	// 	<tbody>
+	// 	<tr>
+	// 	<th scope="row"><i class="fas fa-minus-circle"></i></th>
+	// 	<td>`+data.name+`</td>
+	// 	<td>`+amount +`</td>
+	// 	<td>`+ data.price+`</td>
+	// 	<td>`+ money +`</td>
+	// 	</tr>
+	// 	</tbody>
+	// 	`;
+
+	// }
+
+	// $.get('data.json', function(data) {
+	// 	giohang2 = `<div class="col-12 mt-5 py-5">
+
+	// 	<div class="row">
+	// 	<div class="table-responsive mb-5 text-center">
+	// 	<table class="table table-striped">
+	// 	<thead class="thead-dark">
+	// 	<tr>
+	// 	<th scope="col">Xoá</th>
+	// 	<th scope="col">Sản Phẩm</th>
+	// 	<th scope="col">Số Lượng</th>
+	// 	<th scope="col">Giá</th>
+	// 	<th scope="col">Thanh Toán</th>
+	// 	</tr>
+	// 	</thead>`;
+
+	// 	for(var i=0;i<data.length;i++){
+	// 		let id = data[i].id;
+	// 		while(id.charAt(0) == '0') id = id.substring(1, id.length);
+	// 		if(localStorage.getItem(id) > 0){
+	// 			showItem2(data[i],id);
+	// 		}
+	// 	}
+
+	// 	giohang2 += `</table>
+	// 	</div>
+	// 	</div>
+
+	// 	<div class="row" style="color: red;margin-bottom: 50px;font-size: .9em">
+	// 	<div class="col-12 text-right">
+	// 	`+ money +`vnd
+	// 	</div>
+	// 	</div>`
+
+	// 	$('#cartcontinue').html(giohang2);
+
+	// });
+
 
 	$(window).scroll(function(){ 
 		if ($(this).scrollTop() > 100) { 
