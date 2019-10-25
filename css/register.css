@@ -5,7 +5,6 @@ body{
 .background{
 	transform: translateY(50%);
 	position: absolute;
-	margin-left: 10%;
 	z-index: 2;
 }
 .anhnen{
@@ -21,7 +20,8 @@ body{
 	box-shadow: 0px 0px 5px 4px rgb(199, 199, 199)
 }
 .title{
-	font-size: 32px;
-	margin-bottom: 50px;
+	font-size: 3vw;
+	margin-bottom: 2vw;
 	border-bottom: 1px solid black;
 }
+

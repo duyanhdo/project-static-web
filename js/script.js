@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 					<img src="${products[index-1].img}" class="card-img-top" alt="...">
 					<div class="card-body">
 					<p class="card-text sortName">${products[index-1].name}</p>
-					<p class="sortPrice">${products[index-1].price}</p> <br> <br>
+					<p class="sortPrice">${processMoney(products[index-1].price)}</p> <br> <br>
 					<a href="details.html#${products[index-1].id}" class="btn btn-primary muangay" style="position:absolute;bottom :25px">Mua ngay</a>
 					</div>
 					</div>
@@ -46,7 +46,6 @@ jQuery(document).ready(function($) {
 	$.getJSON('data.json', function(data) {
 		$('.search').keyup(function(){
 			let searchField = $(this).val();
-			console.log($('#results').html());
 			if(searchField ===''  || !$('#content').text().includes(searchField))  {
 				$('#results').html('');
 				return;
@@ -109,7 +108,7 @@ jQuery(document).ready(function($) {
 
 			<div class="col-5">
 			<p class="detail__p mb-lg-4 pb-lg-4">${products[id-1].name}</p> 
-			<p class="detail__p pb-lg-4">${products[id-1].price}</p>
+			<p class="detail__p pb-lg-4">${processMoney(products[id-1].price)}</p>
 			<div class="buy mt-lg-5 mt-4">
 			<span class="substract" onclick="function substract(){
 				var i = parseInt($('.quantity').text(),10);
@@ -161,14 +160,13 @@ jQuery(document).ready(function($) {
 	});
 
 	function showItem(data,id){
-		
+
 		let amount = localStorage.getItem(id);
-		let money = (localStorage.getItem(id)*data.price);
+		let money = calMoney(data);
 		giohang+=`
 		<tbody>
 		<tr>
 		<th scope="row"><i class="fas fa-minus-circle" style="cursor:pointer" id=`+id+` onclick="function del(){
-		
 			$('#show').text(parseInt($('#show').text())-parseInt(localStorage.getItem(id)));
 			localStorage.setItem(id,0);
 			$('#'+id).parent().parent().parent().hide();
@@ -176,32 +174,29 @@ jQuery(document).ready(function($) {
 		}del()"></i></th>
 		<td>`+data.name+`</td>
 		<td>`+amount +`</td>
-		<td>`+ processMoney(data.price)+`</td>
-		<td>`+ processMoney(money+"")+`</td>
+		<td>`+ processMoney(data.price+"")+`</td>
+		<td>`+ processMoney(money+"") +`</td>
 		</tr>
 		</tbody>
 		`;
 		return parseInt(amount);
 	}
-
 	function calMoney(data){
 		let id = data.id;
-		while(id.charAt(0) == '0') id = id.substring(1, id.length);
+		while(id.charAt(0)=='0') id = id.substring(1,id.length);
 		return data.price * localStorage.getItem(id);
 	}
-
 	function processMoney(money){
 		let count = 0;
 		let res = "";
 		for(let i=money.length-1;i>=0;i--){
-			res =  money.charAt(i) + res;
+			res = money.charAt(i) + res;
 			count ++;
-			if(count%3 == 0) res = "." + res ;
+			if(count % 3 == 0 && i !=0) res = "." + res;
 		}
-		if(res.charAt(0) == '.') res = res.substring(1, res.length);
+		
 		return res;
 	}
-
 	$.get('data.json', function(data) {
 
 		giohang = `<div class="table-responsive mb-5 pb-md-5 pb-0 text-center">
@@ -215,7 +210,8 @@ jQuery(document).ready(function($) {
 		<th scope="col">Thanh Toán</th>
 		</tr>
 		</thead>`;
-		let count = 0,money = 0;
+		let count = 0;
+		let money = 0;
 		for(var i=0;i<data.length;i++){
 			let id = data[i].id;
 			while(id.charAt(0) == '0') id = id.substring(1, id.length);
@@ -225,7 +221,13 @@ jQuery(document).ready(function($) {
 			}
 		}
 		$('#show').text(count);
-
+		giohang += `<tr>
+		<th scope="col">Tổng tiền</th>
+		<th scope="col"></th>
+		<th scope="col"></th>
+		<th scope="col"></th>
+		<th scope="col" style="color:red">`+processMoney(money+"")+`</th>
+		</tr>`;
 		giohang+=`</table>
 		</div>`
 
@@ -233,6 +235,7 @@ jQuery(document).ready(function($) {
 
 
 	});
+
 
 
 	$('.mid').on( 'click', 'button', function() {
