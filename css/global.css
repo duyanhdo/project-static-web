@@ -93,11 +93,11 @@ body{
 	color: #D81728;
 	border-bottom: 1px solid #D81728; 
 }
-#hoverheader:hover{
+.hoverheader:hover{
 	color:black;
 	transition: .5s;
 }
-#hover:before{
+.hover:before{
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -111,11 +111,11 @@ body{
 	border-bottom: 1px solid white;
 	z-index: -1;
 }
-#hoverheader:hover:before{
+.hoverheader:hover:before{
 	transform: scaleY(1.2);
 	opacity: 1;
 }
-#hoverheader:after{
+.hoverheader:after{
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -127,7 +127,7 @@ body{
 	background: white;
 	z-index: -1;
 }
-#hoverheader:hover:after{
+.hoverheader:hover:after{
 	transform: scale(1);
 }
 /*.navbar-light .navbar-nav .nav-link{

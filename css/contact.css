@@ -79,6 +79,11 @@ input,textarea{
 		line-height: 100px !important;
 	}
 }
+@media(max-width:420px){
+	.formupper{
+		margin-left: 12px;
+	}
+}
 @media(max-width: 360px){
 	.lienhe__sdt, .lienhe__open,.lienhe__diachi, .lienhe__email {
 		font-size: 20px
