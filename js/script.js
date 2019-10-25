@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 				index ++;
 				if(index >= products.length) break;
 				$('#content').append(`
-					<div class=" col-12 col-md-6 col-lg-3 mb-5">
+					<div class=" col-12 col-md-6 col-lg-3 mb-5 ${products[index-1].class}">
 					<div class="card" style="height:100%">
 					<img src="${products[index-1].img}" class="card-img-top" alt="...">
 					<div class="card-body">
@@ -248,6 +248,11 @@ jQuery(document).ready(function($) {
 
 	// });
 
+	$('.filter-press').click(function(event) {
+		$('.filter-press').css({
+			outline: 'none',
+		});
+	});
 
 	$(window).scroll(function(){ 
 		if ($(this).scrollTop() > 100) { 

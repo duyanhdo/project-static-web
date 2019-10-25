@@ -55,6 +55,10 @@
 body{
 	transition: .3s;
 }
+.filter-press{
+	border: none;
+	background: white;
+}
 
 
 
