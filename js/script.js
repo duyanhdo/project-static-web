@@ -58,10 +58,10 @@ jQuery(document).ready(function($) {
 				if ((val.price.search(regex) != -1) || (val.name.search(regex) != -1)) {
 					find = true;
 					output += `
-					<div class="col-2 mb-4 pl-5">
+					<div class="col-md-2 col-6 mb-4 pl-5">
 					<a href="details.html#${val.id}"><img src="${val.img}" style="width:100%;"></a>
 					</div>
-					<div class="col-2">
+					<div class="col-md-2 col-6">
 					<p class="card-text">${val.name}</p>
 					<p>${val.price}</p>
 					</div>
