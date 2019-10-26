@@ -79,7 +79,7 @@ input,textarea{
 		line-height: 100px !important;
 	}
 }
-@media(max-width:420px){
+@media(max-width:576px){
 	.formupper{
 		margin-left: 12px;
 	}
