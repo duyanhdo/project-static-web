@@ -129,7 +129,7 @@ jQuery(document).ready(function($) {
 			plus()">+</span>
 			</div>
 			<div class="addtocart text-center py-md-3 py-2 mt-lg-5 mt-4" onclick="function add(){
-				localStorage.setItem(`+id+`, parseInt($('.quantity').text())); 
+				localStorage.setItem(`+id+`, parseInt($('.quantity').text()));
 				
 				$.getJSON('data.json', function(data) {
 					let count = 0;
@@ -168,6 +168,36 @@ jQuery(document).ready(function($) {
 		<th scope="row"><i class="fas fa-minus-circle" style="cursor:pointer" id=`+id+` onclick="function del(){
 			$('#show').text(parseInt($('#show').text())-parseInt(localStorage.getItem(id)));
 			localStorage.setItem(id,0);
+			$.get('data.json', function(data) {
+				function calMoney(data){
+					let id = data.id;
+					while(id.charAt(0)=='0') id = id.substring(1,id.length);
+					return data.price * localStorage.getItem(id);
+				}
+				function processMoney(money){
+					let count = 0;
+					let res = '';
+					for(let i=money.length-1;i>=0;i--){
+						res = money.charAt(i) + res;
+						count ++;
+						if(count % 3 == 0 && i !=0) res = '.' + res;
+					}
+					
+					return res;
+				}
+				let tien = 0;
+				for(var i=0;i<data.length;i++){
+					let id = data[i].id;
+					while(id.charAt(0) == '0') id = id.substring(1, id.length);
+					if(localStorage.getItem(id) > 0){
+						
+						tien += calMoney(data[i]);
+					}
+				}
+
+				$('#money').text(processMoney(tien + ''));
+			});
+
 			$('#'+id).parent().parent().parent().hide();
 			
 		}del()"></i></th>
@@ -225,7 +255,7 @@ jQuery(document).ready(function($) {
 		<th scope="col"></th>
 		<th scope="col"></th>
 		<th scope="col"></th>
-		<th scope="col" style="color:red">`+processMoney(money+"")+`</th>
+		<th scope="col" style="color:red" id='money'>`+processMoney(money+"")+`</th>
 		</tr>`;
 		giohang+=`</table>
 		</div>`

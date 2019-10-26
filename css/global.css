@@ -93,9 +93,11 @@ body{
 	color: #D81728;
 	border-bottom: 1px solid #D81728; 
 }
-.hoverheader:hover{
-	color:black;
+.navbar-nav .nav-item .nav-link{
 	transition: .5s;
+}
+.navbar-nav .nav-item .nav-link:hover{
+	color:black;
 }
 .hover:before{
 	content: '';
@@ -130,16 +132,6 @@ body{
 .hoverheader:hover:after{
 	transform: scale(1);
 }
-/*.navbar-light .navbar-nav .nav-link{
-	transition: .3s !important;
-}
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand{
-	transition: .3s;
-}
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover{
-	transform: scale(1.2);
-	color: white;
-}*/
 .muangay{
 	transition: 0.5s;
 }
@@ -163,7 +155,7 @@ a:hover{
 	z-index: 100;
 }
 .table td, .table th {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 
