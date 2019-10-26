@@ -412,6 +412,9 @@
     }
   }
   @media(max-width: 1200px){
+    .row .sph--tdto{
+      font-size: 20px;
+    }
     .carousel-caption .title{
       font-size: 36px;
       padding-bottom: 10px;
@@ -532,6 +535,9 @@
     }
   }
   @media(max-width: 768px){
+    .row .sph--tdto{
+      font-size: 17px;
+    }
     .carousel-caption .title{
       font-size: 32px;
       padding-bottom: 10px;
@@ -568,15 +574,15 @@
       font-size: 16px;
       margin-right: 4.1%;
     }
-    .row .spm--carousel{
-      width: 420px;
-      height: 140px;
-      font-size: 14px;
-      padding: 10px !important;
+    .carousel-control-next .next{
+      left: -850%;
     }
-    .row .sph--tdto{
-      font-size: 32px;
-      margin-bottom: 5px;
+    .row .spm--carousel{
+      width: 350px;
+      height: 78px;
+      font-size: 14px;
+      overflow:hidden;
+      padding: 10px !important;
     }
     .row .sph--tdnho{
       font-size: 21px;
@@ -619,206 +625,194 @@
     }
   }
   @media(max-width: 576px){
+    .carousel-control-next .next{
+      left: -950%;
+    }
     .bd-example .slide{
       margin-top: 65px;
     }
-  /*  .title{
-      font-size: 22px;
-      padding-bottom: 10px;
+    .cachduoi{
+      padding-bottom:50px;
     }
-    .title-under{
-      font-size: 8px;
-      line-height: 20px;
-      }*/
-    /*.carouselin{
+    .spm .spm--big{
+      font-size: 29px;
+    }
+    .spm .spm--small{
+      font-size: 16px;
+      padding-bottom: 50px;
+    }
+    .spm .nut{
+      font-size: 20px;
+      display: block;
+      width: 100px;
+      margin: auto;
+      margin-top: 20px;
+    }
+    .tdto{
+      padding-top: 0;
+      padding-bottom: 50px;
+    }
+    .row .spm--td{
+      font-size: 20px;
+    }
+    .spm__imput--radio{
+      margin-bottom: 20px;
+    }
+    .row .spm--carousel{
+      width: 300px;
+      height: 100px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    .row .sph--tdto{
+      font-size: 14px;
+    }
+    .row .sph--tdnho{
+      font-size: 16px;
+    }
+    .carousel .prev{
+      width: 30px;
+      height: 30px;
       position: absolute;
-      top: 10px;
-      }*/
-    /*.carousel--top--xt{
-      margin-top: 0px !important;
-      font-size: 8px;
-      }*/
-      .cachduoi{
-        padding-bottom:50px;
-      }
-      .spm .spm--big{
-        font-size: 29px;
-      }
-      .spm .spm--small{
-        font-size: 16px;
-        padding-bottom: 50px;
-      }
-      .spm .nut{
-        font-size: 20px;
-        display: block;
-        width: 100px;
-        margin: auto;
-        margin-top: 20px;
-      }
-      .tdto{
-        padding-top: 0;
-        padding-bottom: 50px;
-      }
-      .row .spm--td{
-        font-size: 20px;
-      }
-      .spm__imput--radio{
-        margin-bottom: 20px;
-      }
-      .row .spm--carousel{
-        width: 300px;
-        height: 100px;
-        overflow: hidden;
-        font-size: 13px;
-      }
-      .row .sph--tdto{
-        font-size: 28px;
-      }
-      .row .sph--tdnho{
-        font-size: 16px;
-      }
-      .carousel .prev{
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        left: -525%;
-      }
-      .carousel .next{
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        right: 0;
-      }
-      .row .kmbhtt{
-        font-size: 32px;
-      }
-      #carouselExampleControls{
-        padding-top: 0 !important;
-      }
-      .cachduoi1{
-        margin-bottom: 30px;
-      }
-      .carousel-item .carousel--wrap{
-        top:20%;
-      }
-      .row .dichvu--mid{
-        font-size: 30px;
-      }
-      .row .new1{
-        font-size: 26px;
-      }
-      .avt{
-        width: 100px;
-        height: 100px;
-        margin-bottom: 20px;
-      }
+      left: -525%;
     }
-
-    @media(max-width: 360px){
-      .row .welcome{
-        font-size: 30px;
-      }
-      .spm .spm--big{
-        font-size: 24px;
-      }
-      .spm .nut{
-        margin-top: 10px;
-      }
-      .row .tdto{
-        font-size: 36px;
-      }
-      .row .spm--td{
-        font-size: 17px;
-      }
-      .spm_span-radio{
-        font-size: 14px;
-      }
-      .row .sph--tdto{
-        font-size: 18px;
-      }
-      .row .sph--tdnho{
-        font-size: 13px;
-      }
-      .spm--carousel{
-        display: none
-      }
-      .sph--tdnho{
-        background: rgba(0, 0, 0, 0.73);
-        color: white;
-        padding: 10px;
-      }
-      .row .new1{
-        font-size: 22px;
-      }
-      .carousel-item .carousel--wrap{
-        top: 15%;
-      }
-      .row .dichvu--mid{
-        font-size: 22px;
-      }
-      .row .email{
-        margin-top: 40px;
-        width: 280px;
-        margin-left: -35px;
-      }
-      .email .fa-chevron-right{
-        left: 89%;
-        top: 13px;
-        font-size: 25px;
-      }
-      .email .far{
-        left: 15px;
-        top: 13px;  
-        font-size: 25px;  
-      }
-      .row .underwelcome--text{
-        font-size: 14px;
-      }
-      .email .left{
-        height: 50px;
-        line-height: 50px;
-      }
-      .carousel .next{
-        left: -850%;
-      }
+    .carousel .next{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      right: 0;
     }
-    @media(max-width: 320px){
-      .spm .spm--small,.spm .nut{
-        font-size: 14px;
-      }
-      .row .spm{
-        top: 15%;
-      }
-      .spm__imput--radio{
-        margin-bottom: 10px;
-      }
-      .spm__imput--radio .spm_span-radio{
-        padding-left: 5px;
-      }
-      .sph--tdnho{
-        display: none;
-      }
-      .row .sph--tdto{
-        font-size: 20px;
-      }
-      .row .kmbhtt{
-        font-size: 30px;
-      }
-      .carousel-item .carousel--wrap{
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: 300;
-      }
-      .row .dichvu--mid{
-        font-size: 18px;
-      }
-      .row .new1{
-        font-size: 20px;
-      }
-      .row .email{
-        width: 260px;
-      }
+    .row .kmbhtt{
+      font-size: 32px;
     }
+    #carouselExampleControls{
+      padding-top: 0 !important;
+    }
+    .cachduoi1{
+      margin-bottom: 30px;
+    }
+    .carousel-item .carousel--wrap{
+      top:20%;
+    }
+    .row .dichvu--mid{
+      font-size: 30px;
+    }
+    .row .new1{
+      font-size: 26px;
+    }
+    .avt{
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+  }
+  @media(max-width: 500px){
+    .spm--carousel{
+      display: none;
+    }
+    .row .sph--tdto{
+      font-size: 4vw;
+    }
+  }
+  @media(max-width: 360px){
+    .row .welcome{
+      font-size: 30px;
+    }
+    .spm .spm--big{
+      font-size: 24px;
+    }
+    .spm .nut{
+      margin-top: 10px;
+    }
+    .row .tdto{
+      font-size: 36px;
+    }
+    .row .spm--td{
+      font-size: 17px;
+    }
+    .spm_span-radio{
+      font-size: 14px;
+    }
+    .row .sph--tdnho{
+      font-size: 13px;
+    }
+    .spm--carousel{
+      display: none
+    }
+    .sph--tdnho{
+      background: rgba(0, 0, 0, 0.73);
+      color: white;
+      padding: 10px;
+    }
+    .row .new1{
+      font-size: 22px;
+    }
+    .carousel-item .carousel--wrap{
+      top: 15%;
+    }
+    .row .dichvu--mid{
+      font-size: 22px;
+    }
+    .row .email{
+      margin-top: 40px;
+      width: 280px;
+      margin-left: -35px;
+    }
+    .email .fa-chevron-right{
+      left: 89%;
+      top: 13px;
+      font-size: 25px;
+    }
+    .email .far{
+      left: 15px;
+      top: 13px;  
+      font-size: 25px;  
+    }
+    .row .underwelcome--text{
+      font-size: 14px;
+    }
+    .email .left{
+      height: 50px;
+      line-height: 50px;
+    }
+    .carousel .next{
+      left: -850%;
+    }
+  }
+  @media(max-width: 320px){
+    .spm .spm--small,.spm .nut{
+      font-size: 14px;
+    }
+    .row .spm{
+      top: 15%;
+    }
+    .spm__imput--radio{
+      margin-bottom: 10px;
+    }
+    .spm__imput--radio .spm_span-radio{
+      padding-left: 5px;
+    }
+    .sph--tdnho{
+      display: none;
+    }
+    .row .kmbhtt{
+      font-size: 30px;
+    }
+    .carousel-item .carousel--wrap{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 300;
+    }
+    .row .dichvu--mid{
+      font-size: 18px;
+    }
+    .row .new1{
+      font-size: 20px;
+    }
+    .row .email{
+      width: 260px;
+    }
+  }
 
 /*---------------------------------------------------------------
   ---------------------------------------------------------------

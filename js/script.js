@@ -129,7 +129,7 @@ jQuery(document).ready(function($) {
 			plus()">+</span>
 			</div>
 			<div class="addtocart text-center py-md-3 py-2 mt-lg-5 mt-4" onclick="function add(){
-				localStorage.setItem(`+id+`, parseInt($('.quantity').text()));
+				localStorage.setItem(`+id+`, parseInt($('.quantity').text())); 
 				
 				$.getJSON('data.json', function(data) {
 					let count = 0;
@@ -141,7 +141,6 @@ jQuery(document).ready(function($) {
 							
 						}
 					}
-					console.log(count);
 					$('#show').text(count);
 
 				})
