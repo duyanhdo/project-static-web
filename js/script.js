@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
 		if(sl==null || isNaN(sl)) sl = 0;
 		
 		$('#detail').html(`
-			<div class="col-7">
+			<div class="col-7 mt-5 pt-5">
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 			<div class="carousel-item active">
@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
 			</div>
 			</div>
 
-			<div class="col-5">
+			<div class="col-5 mt-5 pt-5">
 			<p class="detail__p mb-lg-4 pb-lg-4">${products[id-1].name}</p> 
 			<p class="detail__p pb-lg-4">${processMoney(products[id-1].price)}</p>
 			<div class="buy mt-lg-5 mt-4">
