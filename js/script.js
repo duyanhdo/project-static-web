@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
 
 	$.getJSON('data.json', function(data) {
 		$('.search').keyup(function(){
-			let searchField = $(this).val();
+			let searchField = $(this).val().toLowerCase();
 			if(searchField ===''  || !$('#content').text().includes(searchField))  {
 				$('#results').html('');
 				return;
