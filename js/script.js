@@ -265,6 +265,12 @@ jQuery(document).ready(function($) {
 
 	});
 
+	$('.tt').click(function(event) {
+		if($('#show').text()==0){
+			alert("Bạn chưa có sản phẩm nào trong giỏ hàng, hãy mua thêm nhé!");
+			event.preventDefault();
+		}
+	});
 
 
 	$('.mid').on( 'click', 'button', function() {
