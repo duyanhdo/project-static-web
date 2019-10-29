@@ -58,8 +58,27 @@ body{
 .filter-press{
 	border: none;
 	background: white;
+	/*border-bottom: 1px solid black;*/
 }
-
+.filter{
+	position: sticky;
+	top:100px;
+	border: 1px solid black;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+@media(max-width: 768px){
+	.filtermid{
+		margin-bottom: 50px;
+	}
+	.row .filter{
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		margin-top: -50px;
+		position: sticky;
+		top: 0;
+	}
+}
 
 
 

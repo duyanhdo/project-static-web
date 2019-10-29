@@ -8,11 +8,11 @@ jQuery(document).ready(function($) {
 	var index = 0;
 	function loadjson(){
 		$.get('data.json',function(products){
-			for(var i = 0; i < 8; i++){
+			for(var i = 0; i < 6; i++){
 				index ++;
 				if(index >= products.length) break;
 				$('#content').append(`
-					<div class="col-6 col-lg-3 mb-5 ${products[index-1].class}">
+					<div class="col-6 col-lg-4 mb-5 ${products[index-1].class}">
 					<div class="card" style="height:100%">
 					<img src="${products[index-1].img}" class="card-img-top" alt="...">
 					<div class="card-body">
@@ -52,7 +52,7 @@ jQuery(document).ready(function($) {
 			}
 
 			let regex = new RegExp(searchField, "i");
-			let output = `<div class="row pt-4">`;
+			let output = `<div class="row pt-4 mx-0">`;
 			var find = false;
 			$.each(data, function(key, val){
 				if ((val.price.search(regex) != -1) || (val.name.search(regex) != -1)) {
@@ -292,7 +292,11 @@ jQuery(document).ready(function($) {
 	$('.filter-press').click(function(event) {
 		$('.filter-press').css({
 			outline: 'none',
+			color : 'black'
 		});
+		$(this).css({
+			color : 'orange'
+		})
 	});
 
 	$(window).scroll(function(){ 

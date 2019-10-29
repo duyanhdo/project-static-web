@@ -38,28 +38,8 @@
 
   <!-- Main -->
   <div class="container">
-    <div class="row text-center product__list mt-lg-0 mt-5 filter">
-      <div class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3">
-        <span class="product__list--all"><a href="" style="color: #D81728">tất cả sản phẩm</a></span>
-      </div>
-      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--hmv filter-press" data-filter=".de">
-        Đề
-      </button>
-      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--dcxh filter-press" data-filter=".qkn">
-        Quạt két nước
-      </button>
-      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--nt filter-press" data-filter=".qgl">
-        Quạt giàn lạnh
-      </button>
-      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--pk filter-press" data-filter=".mm">
-        Mặt máy
-      </button>
-      <button class="col-md-2 col-4 mt-lg-5 pt-lg-5 mb-3 product__list--k filter-press" data-filter=".mp">
-        Máy phát
-      </button> 
-    </div> <!-- het row -->
 
-    <div class="row my-5">
+    <div class="row my-md-5 pt-md-5 mt-5">
       <div class="col-lg-3 col-sm-4 col-12 mb-sm-0 mb-4">
         <input class="search" type="text" name="search" placeholder="Tìm Kiếm ..."><i class="fas fa-search search1"></i>
       </div>
@@ -68,13 +48,39 @@
         <button class="orderBy--choice--input orderBy--choice ascPrice sortCommon filter-press" data-sort-value="sortPrice">giá</button>
         <button class="orderBy--choice--input orderBy--choice ascAlphabet sortCommon filter-press" data-sort-value="sortName">bảng chữ cái</button>
       </div>
-      <div class="col-12 pt-5">
+      
+      <div class="col-12 pt-md-5 pt-3">
         <div id="results"></div>
       </div>
     </div> <!-- het row -->
 
-    <div class="row load" id="content"></div> <!-- het row -->
-
+    <div class="row">
+      <div class="col-md-3 col-12 filtermid">
+        <div class="row text-center product__list mt-lg-0 mt-5 filter mx-0">
+          <div class="col-md-12 col-2 py-3">
+            <button class=" filter-press active0">Tất cả sản phẩm</button>
+          </div>
+          <button class="col-md-12 col-2 py-3 product__list--hmv filter-press active1" data-filter=".de">
+            Đề
+          </button>
+          <button class="col-md-12 col-2 py-3 product__list--dcxh filter-press active2" data-filter=".qkn">
+            Quạt két nước
+          </button>
+          <button class="col-md-12 col-2 py-3 product__list--nt filter-press active3" data-filter=".qgl">
+            Quạt giàn lạnh
+          </button>
+          <button class="col-md-12 col-2 py-3 product__list--pk filter-press active4" data-filter=".mm">
+            Mặt máy
+          </button>
+          <button class="col-md-12 col-2 py-3 product__list--k filter-press active5" data-filter=".mp">
+            Máy phát
+          </button> 
+        </div> <!-- het row -->
+      </div>
+      <div class="col-md-9 col-12">
+        <div class="load row" id="content"></div>
+      </div> <!-- het row -->
+    </div>
     <div class="row mb-5 pb-5">
       <div class="btn btn-primary xemthem my-md-5" id="xemthem">Xem Thêm</div>
     </div> <!-- het row -->
