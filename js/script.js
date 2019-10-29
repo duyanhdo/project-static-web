@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
 				$('#content').append(`
 					<div class="col-6 col-lg-4 mb-5 ${products[index-1].class}">
 					<div class="card" style="height:100%">
-					<img src="${products[index-1].img}" class="card-img-top" alt="...">
+					<a href="details.html#${products[index-1].id}"><img src="${products[index-1].img}" class="card-img-top" alt="..."></a>
 					<div class="card-body">
 					<p class="card-text sortName">${products[index-1].name}</p>
 					<p class="sortPrice">${processMoney(products[index-1].price)}</p> <br> <br>
@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 				
 				
 			}add()">thêm vào giỏ</div>
-			<p class="detail__text mt-lg-5 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+			<p class="detail__text mt-lg-5 mt-4">Xuất xứ: Nhật Bản <br><br> Nhà cung cấp: Denso<br><br>Số điện thoại: 0912700469<br><br>Tình trạng: Còn hàng</p>
 			<span class="ttmh mt-md-5 mt-4"><a href="products.html" style="color: white">tiếp tục mua hàng</a></span>
 			<span class="tt mt-md-5 mt-4"><a href="purchase.html" style="color: black">thanh toán</a></span>
 			</div>
