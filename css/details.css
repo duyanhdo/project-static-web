@@ -2,7 +2,7 @@
 	background-image: url('../images/detail.png');
 }
 .carousel-control-prev-icon{
-  	color: black ;
+	color: black ;
 }
 .detail__p{
 	font-size: 2vw;
@@ -53,6 +53,12 @@
 @media(max-width: 320px){
 	.gt{
 		font-size: 13px;
+	}
+}
+@media(min-width: 1440px){
+	.row .ttmh,.row .tt{
+		font-size: 1vw;
+		padding: 0.6vw 1vw;
 	}
 }
 .ttmh,.tt{

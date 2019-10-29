@@ -3,7 +3,7 @@
 	padding: 0;
 }
 .home{
-	background: #009688;
+	background: #414242;
 	height: 120px;
 	display: block;
 	width: 100%;
@@ -13,21 +13,21 @@
 	font-size: 20px
 }
 body{
-	background: #bfe8e5;
+	background: #a2a2a2;
 	font-family: 'Catamaran', sans-serif;
 	position: fixed;
 	width: 100%;
 }
 form{
 	width: 500px;
-	border: 1px solid #77777754;
+	border: 1px solid black;
 	box-sizing: border-box;
 	height: 630px;
 	position: fixed;
 	top:80px;
 	left: 50%;
 	transform: translateX(-50%);
-	border-top: 10px solid lightblue;
+	border-top: 10px solid black;
 	background: white;
 	padding-left: 30px
 }
@@ -65,7 +65,7 @@ span{
 }
 .home{
 	color: white;
-	border-bottom: 5px solid lightblue;
+	border-bottom: 5px solid black;
 }
 .count{
 	width: 20px;

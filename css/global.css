@@ -93,44 +93,16 @@ body{
 	color: #D81728;
 	border-bottom: 1px solid #D81728; 
 }
-.navbar-nav .nav-item .nav-link{
+.navbar-nav .nav-item .nav-link,.navbar-light .navbar-brand{
 	transition: .5s;
+}
+.navbar-light .navbar-brand:hover{
+	transform: scale(1.2);
+	color: white;
 }
 .navbar-nav .nav-item .nav-link:hover{
-	color:black;
-}
-.hover:before{
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	transform: scaleY(2);
-	opacity: 0;
-	transition: .5s;
-	top: 0;
-	left: 0;
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
-	z-index: -1;
-}
-.hoverheader:hover:before{
-	transform: scaleY(1.2);
-	opacity: 1;
-}
-.hoverheader:after{
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	transform: scale(0);
-	transition: .5s;
-	top: 1px;
-	left: 0;
-	background: white;
-	z-index: -1;
-}
-.hoverheader:hover:after{
-	transform: scale(1);
+	transform: scale(1.2);
+	color: white;
 }
 .muangay{
 	transition: 0.5s;
@@ -160,7 +132,17 @@ a:hover{
 .sortName{
 	text-transform: capitalize;
 }
-
+@media(max-width: 512px){
+	.sortName,.sortPrice,.muangay{
+		font-size: 3vw!important;
+		margin-bottom: 1vw;
+	}
+}
+@media(max-width: 360px){
+	.card-body .muangay{
+		padding: 1vw 2vw;
+	}
+}
 
 
 

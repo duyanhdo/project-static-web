@@ -24,4 +24,8 @@ body{
 	margin-bottom: 2vw;
 	border-bottom: 1px solid black;
 }
-
+@media(min-width: 1500px){
+	.background1{
+		height: 500px;
+	}
+}
