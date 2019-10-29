@@ -399,6 +399,11 @@
 
   /*responsive cho index*/
 
+  @media(min-width: 1440px){
+    .imgres{
+      width: 100%;
+    }
+  }
   @media(max-width: 1280px){
     .carousel-caption .title{
       font-size: 42px;

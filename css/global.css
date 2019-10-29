@@ -142,6 +142,9 @@ a:hover{
 	.card-body .muangay{
 		padding: 1vw 2vw;
 	}
+	.card-body{
+		padding: 0.5rem;
+	}
 }
 
 
