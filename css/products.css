@@ -57,15 +57,20 @@ body{
 }
 .filter-press{
 	border: none;
-	background: white;
-	/*border-bottom: 1px solid black;*/
+	padding: 10px 5px 10px 20px;
+    border-bottom: 1px solid #f2f2f2;
+    position: relative;
+	padding: 10px 10px;
 }
 .filter{
 	position: sticky;
 	top:100px;
-	border: 1px solid black;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
+}
+.filter-all{
+	background-color: #ff7500;
+    color: #fff;
+    padding: 15px;
+    width:100%;
 }
 @media(max-width: 768px){
 	.filtermid{
@@ -75,8 +80,6 @@ body{
 		border-top-left-radius: 0px;
 		border-top-right-radius: 0px;
 		margin-top: -50px;
-		position: sticky;
-		top: 0;
 	}
 }
 

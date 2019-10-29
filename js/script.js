@@ -292,10 +292,10 @@ jQuery(document).ready(function($) {
 	$('.filter-press').click(function(event) {
 		$('.filter-press').css({
 			outline: 'none',
-			color : 'black'
+			'text-decoration' : 'none'
 		});
 		$(this).css({
-			color : 'orange'
+			'text-decoration' : 'underline'
 		})
 	});
 
