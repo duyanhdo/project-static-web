@@ -61,6 +61,11 @@ body{
     border-bottom: 1px solid #f2f2f2;
     position: relative;
 	padding: 10px 10px;
+	background-color: #e8663d26;
+}
+.sortCommon{
+	background-color: white;
+	border-bottom: none;
 }
 .filter{
 	position: sticky;
@@ -79,7 +84,6 @@ body{
 	.row .filter{
 		border-top-left-radius: 0px;
 		border-top-right-radius: 0px;
-		margin-top: -50px;
 	}
 }
 

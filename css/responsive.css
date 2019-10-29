@@ -718,6 +718,9 @@
     .row .sph--tdto{
       font-size: 4vw;
     }
+    .row .dichvu--mid{
+      font-size: 22px;
+    }
   }
   @media(max-width: 360px){
     .row .welcome{
@@ -750,13 +753,13 @@
       padding: 10px;
     }
     .row .new1{
-      font-size: 22px;
+      font-size: 18px;
     }
     .carousel-item .carousel--wrap{
       top: 15%;
     }
     .row .dichvu--mid{
-      font-size: 22px;
+      font-size: 19px;
     }
     .row .email{
       margin-top: 40px;
